@@ -2,7 +2,8 @@
 
 body {
   margin: 0;
+  padding: 0;
   background-color: variables.$bg;
-  color: var(--text);
+  color: variables.$text;
   font-family: Arial, Helvetica, sans-serif;
 }
