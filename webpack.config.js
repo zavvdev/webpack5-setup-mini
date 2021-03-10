@@ -1,23 +1,31 @@
-const path = require("path");
-const mode =
-  process.env.NODE_ENV === "production" ? "production" : "development";
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+let mode = "development";
+
+if (process.env.NODE_ENV === "production") {
+  mode = "production";
+}
 
 module.exports = {
   mode,
+  devtool: "source-map",
+  devServer: {
+    contentBase: "./dist",
+    hot: true,
+  },
   module: {
     rules: [
+      {
+        test: /\.s?css$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          // reference to .babelrc
           loader: "babel-loader",
         },
       },
     ],
   },
-  devtool: "source-map",
-  devServer: {
-    contentBase: "./dist",
-  },
+  plugins: [new MiniCssExtractPlugin()],
 };

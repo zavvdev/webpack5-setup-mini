@@ -1,12 +1,16 @@
-import getStuff from "./getStuff";
+import "./styles/index.scss";
+import getStuff from "./stuff/getStuff";
 
-console.log("index.js");
-getStuff();
-
-const moreStuff = {
+const obj = {
   one: "one",
   two: "two",
 };
 
-const moreMoreStuff = { ...moreStuff, three: "three" };
-console.log(moreMoreStuff);
+const newObj = {
+  ...obj,
+  three: "three",
+};
+
+console.log(obj);
+console.log(newObj);
+getStuff();
